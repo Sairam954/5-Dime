@@ -14,7 +14,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
   
 
   
-                                                         };
+                                                         
                                                          
         
         
