@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 
 
-var port=80;
+var port=8080;
 
 app.use(expressSession({
     secret: 'a4f8071f-c873-4447-8ee2',
