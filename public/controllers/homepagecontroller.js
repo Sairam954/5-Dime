@@ -11,24 +11,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
            
         });
     $scope.product= $localStorage.productSpecific;
-   $scope.refreshProductPage=function(){
-        if($scope.product!=undefined){
-        if($scope.product.department=="electronics")
-            {
-                $scope.pshow=false;
-                $scope.phide=true;
-                console.log("electronics")
-            }
-        else{
-            var array=Object.keys($scope.product.size);
-            console.log(array);
-            $scope.size=array;
-            $scope.pshow=true;
-            $scope.phide=false;
-            console.log("other")
-        }
-        }
-    } ; 
+  
 
     $scope.insertProducts=function()
     {
@@ -80,7 +63,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
         $location.path('/productpage');
     }
     
-   $scope.refreshProductPage();
+  
 $scope.placeOrder=function()
     { 
         
