@@ -6,8 +6,16 @@ var products=require('./models/products_model');
 var user=require('./models/user_model');
  var cookieParser = require('cookie-parser');
   var  expressSession = require('express-session');
-var db=mongoose.connect('mongodb://user6QN:YNOjbvVJlboa8nPe 
-/sampledb');
+var db=mongoose.connect('mongodb://user6QN:YNOjbvVJlboa8nPe/sampledb',function(err){
+    if(err)
+        {
+            throw err;
+        }
+    else
+        {
+            console.log("mongodb connected succesfully");
+        }
+});
  var warnings={"existingEmail":"","wrongCredentials":""};
    
 var bodyParser=require('body-parser');
