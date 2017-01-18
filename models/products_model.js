@@ -22,4 +22,5 @@ productName:{type:String},
     warrantyPeriod:{type:String},
     color:{type:String}
 },{collection:'products'});
+productsSchema.index( { productName: "text", productDescription: "text" ,brand: "text",category: "text",department: "text",manufacturer: "text"   } );
 module.exports=mongoose.model('products',productsSchema);
