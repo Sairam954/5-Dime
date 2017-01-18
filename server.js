@@ -6,7 +6,8 @@ var products=require('./models/products_model');
 var user=require('./models/user_model');
  var cookieParser = require('cookie-parser');
   var  expressSession = require('express-session');
-var db=mongoose.connect('mongodb://user6QN:YNOjbvVJlboa8nPe/sampledb',function(err){
+
+var db=mongoose.connect('mongodb://user6QN:YNOjbvVJlboa8nPe@mongodb/sampledb',function(err){
     if(err)
         {
             throw err;
