@@ -14,7 +14,12 @@ productName:{type:String},
           },
     quantity:{type:Number},
     price:{type:Number},
-    productDescription:{type:String}
-    
+    productDescription:{type:String},
+    image:{type:String},
+    manufacturer:{type:String},
+    specifications:{type:String},
+    rating:{type:Number},
+    warrantyPeriod:{type:String},
+    color:{type:String}
 },{collection:'products'});
 module.exports=mongoose.model('products',productsSchema);
