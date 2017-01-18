@@ -28,6 +28,8 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
             console.log("other")
         }
     } ;
+  /* $localStorage.wishLS=[];
+    $localStorage.itemLS=[];*/
    
      $scope.subTotal=0;
     $scope.displayProduct=function(product)
@@ -53,7 +55,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
         $location.path('/productpage');
     }
     
-   //$scope.refreshProductPage();
+   $scope.refreshProductPage();
 $scope.placeOrder=function()
     { 
         
@@ -79,7 +81,7 @@ $scope.placeOrder=function()
         });
     
     };
-   //$localStorage.wishLS=[];
+  
      $scope.itemArray=$localStorage.itemLS||[];
     $scope.wishListArray=$localStorage.wishLS||[];
    // console.log($localStorage.wishLS+"---in wl");
@@ -96,16 +98,16 @@ $scope.placeOrder=function()
    
     
     
-        $scope.addItem=function(product)
+        $scope.addItem=function(prodID,prodName,prodImage,prodPrice,prodQuantity,prodBrand,prodManufacturer)
     {
-            console.log(product);
-   var itemIndex= $scope.isItemPresent(product._id,$scope.itemArray);
+           // console.log(product);
+   var itemIndex= $scope.isItemPresent(prodID,$scope.itemArray);
        // console.log(itemPresent);
             console.log(itemIndex);
     if(itemIndex==-1)
         {
             
-             $scope.itemArray.push({pid:product._id,pname:product.productName,pimg:product.image,pprice:product.price,pquantity:product.quantity,pbrand:product.brand,pmanufacturer:product.manufacturer, count:1});
+             $scope.itemArray.push({pid:prodID,pname:prodName,pimg:prodImage,pprice:prodPrice,pquantity:prodQuantity,pbrand:prodBrand,pmanufacturer:prodManufacturer,  count:1});
         }
         else
             {
@@ -188,15 +190,15 @@ $scope.placeOrder=function()
     console.log($scope.itemArray);
   
   // $scope.wishListArray= $localStorage.wishLS;
-  $scope.deleteProduct=function(product)
+  $scope.deleteProduct=function(product,arrayList)
   {
    
        
-     var itemIndex= $scope.isItemPresent(product.pid,$scope.itemArray);
+     var itemIndex= $scope.isItemPresent(product.pid,arrayList);
     
       
-          $scope.itemArray.splice(itemIndex,1);
-       $localStorage.itemLS=$scope.itemArray;
+          arrayList.splice(itemIndex,1);
+       //$localStorage.itemLS=$scope.itemArray;
       
       console.log($scope.itemArray);
       
@@ -240,7 +242,7 @@ $location.path("/");
               }
           else
               {
-                  $scope.notAvailable="Sorry We dont  have any Products with That name"; 
+                  $scope.notAvailable="Sorry We dont  have any Products with name - "+ $scope.searchitem ;
                    $scope.searcitem="";
               }
        })

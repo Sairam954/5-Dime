@@ -58,8 +58,7 @@
 
     </div>
     
-         <br>
-    <br>
+   <br>      
     <br>
         <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="product in products">
             <div class="col-item">
@@ -81,7 +80,7 @@
                         </div>
                     </div>
                     <div class="separator clear-left">
-                         <button type="button" class="btn btn-warning" ng-click="addItem(product)">
+                        <button type="button" class="btn btn-warning" ng-click="addItem(product._id,product.productName,product.image,product.price,product.quantity,product.brand,product.manufacturer)">
                             <i class="fa fa-shopping-cart"></i>Add to cart</button>
                         <button type="button" class="btn btn-warning pull-right" id="wish" ng-click="wishList(product,$index)" >
                             <span class="glyphicon glyphicon-heart"></span>Wishlist</button>

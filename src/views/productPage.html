@@ -1,13 +1,12 @@
 <div ng-app="myApp"><br><br><br><br><br><br>
-      <div class="row">
-      </div>
+      
       
       
           
           <div class="col-md-4 col-sm-4 col-xs-4">
              <div class="row">
             <div class="thumbnail">
-               <img src="{{product.image}}" alt="Fjords" style="width:100%">
+               <img src="{{product.image}}" alt="Fjords" style="width:60%">
                 <div class="caption">
                 
                    
@@ -66,7 +65,7 @@
                 
                     <div class="col-md-3 col-sm-3 col-xs-3">
         				<p class="btn-add" align="left">
-        					<button type="button" class="btn btn-warning" ng-click="addItem(product)">
+        					 <button type="button" class="btn btn-warning" ng-click="addItem(product._id,product.productName,product.image,product.price,product.quantity,product.brand,product.manufacturer)">
                             <i class="fa fa-shopping-cart"></i>Add to cart</button>
         				</p>
         				</div>

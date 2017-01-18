@@ -15,6 +15,7 @@
         
       
     <div class="row">
+         <div  ><h1 align="center" ng-style="{ font-family: 'Bangers';font-size: 22px; }">YOUR CART</h1></div>
         
             <table class="table table-hover">
                 
@@ -26,8 +27,7 @@
                         <th class="text-center"><h4>Quantity</h4></th>
                         <th class="text-center"><h4>Price</h4></th>
                         <th class="text-center"><h4>Total</h4></th>
-                        <th> </th>
-                    
+                       <th class="text-center"><h4>Delete</h4></th>
                     </tr>
                         
                 </thead>
@@ -50,7 +50,7 @@
                         <td class="col-sm-1 col-md-1 text-center"><strong><span class="productprice" id="prodprice1">&#x20B9; {{product.pprice}}</span></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><span class="totalprice" id="totprice1" ng-model="product.itemTotal" >&#x20B9; {{product.itemTotal=product.pprice*product.count}}</span></strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger" ng-click="deleteProduct(product)">
+                        <button type="button" class="btn btn-danger" ng-click="deleteProduct(product,itemArray)">
                             <span class="glyphicon glyphicon-trash" ></span> 
                             </button></td>
                     </tr>

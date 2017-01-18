@@ -81,7 +81,7 @@
                         </div>
                     </div><br>
                     <div class="separator clear-left">
-                       <button type="button" class="btn btn-warning" ng-click="addItem(product)">
+                       <button type="button" class="btn btn-warning" ng-click="addItem(product._id,product.productName,product.image,product.price,product.quantity,product.brand,product.manufacturer)">
                             <i class="fa fa-shopping-cart"></i>Add to cart</button>
                         
                                                     <button type="button" class="btn btn-warning pull-right" id="wish" ng-click="wishList(product,$index)" >
