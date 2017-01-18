@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 
 
-var port=5000;
+var port=80;
 
 app.use(expressSession({
     secret: 'a4f8071f-c873-4447-8ee2',
@@ -408,7 +408,7 @@ app.post('/placeorder',function(req,res){
     
 });
 
-app.listen(5000,function(err)
+app.listen(port,function(err)
 {
 	console.log("running server on port "+port);
 	
