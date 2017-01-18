@@ -28,6 +28,29 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
             console.log("other")
         }
     } ;
+    $scope.insertProducts=function()
+    {
+        
+         $http.get("/loginorsignup/insertProducts").then(function(res) {
+         
+         console.log("products inserted");
+             console.log(res.status);
+         
+         });
+                                                         };
+                                                         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
   /* $localStorage.wishLS=[];
     $localStorage.itemLS=[];*/
    
