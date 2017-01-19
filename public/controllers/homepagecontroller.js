@@ -11,6 +11,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
            
         });
     $scope.product= $localStorage.productSpecific;
+    $scope.size=$localStorage.prodSize;
   
 
   
@@ -48,6 +49,8 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
             var array=Object.keys($scope.product.size);
             console.log(array);
             $scope.size=array;
+            
+            $localStorage.prodSize=$scope.size;
             $scope.pshow=true;
             $scope.phide=false;
             console.log("other")

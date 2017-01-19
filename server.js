@@ -6,6 +6,7 @@ var products=require('./models/products_model');
 var user=require('./models/user_model');
  var cookieParser = require('cookie-parser');
   var  expressSession = require('express-session');
+
 var db=mongoose.connect('mongodb://admin:admin@ds117839.mlab.com:17839/heroku_hqt7r27m',function(err){
     if(err)
         {
