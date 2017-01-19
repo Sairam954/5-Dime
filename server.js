@@ -6,7 +6,7 @@ var products=require('./models/products_model');
 var user=require('./models/user_model');
  var cookieParser = require('cookie-parser');
   var  expressSession = require('express-session');
-var db=mongoose.connect('mongodb://user6QN:YNOjbvVJlboa8nPe@mongodb/sampledb',function(err){
+var db=mongoose.connect('mongodb://admin:admin@ds117839.mlab.com:17839/heroku_hqt7r27m',function(err){
     if(err)
         {
             throw err;
@@ -408,7 +408,7 @@ app.post('/placeorder',function(req,res){
     
 });
 
-app.listen(port,function(err)
+app.listen(process.env.PORT||5000,function(err)
 {
 	console.log("running server on port "+port);
 	
