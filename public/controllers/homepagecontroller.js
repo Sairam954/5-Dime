@@ -2,7 +2,7 @@ var myApp=angular.module("myApp",['ngRoute','ngStorage']);
 myApp.controller("myController",['$scope','$http','$location','$localStorage',function($scope,$http,$location,$localStorage){
     
      $http.get('/refresh').then(function(response)
-        { console.log(response.data.logedin);   
+        { //console.log(response.data.logedin);   
          var logedin=response.data.logedin;
          $scope.userName=response.data.userName;
           $scope.loginshow=!logedin;
@@ -14,13 +14,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
     $scope.size=$localStorage.prodSize;
   
 
-  /*try{
-    if(typeof response[0].title !== 'undefined') {
-        doSomething();
-    }
-  }catch(e){
-    console.log('responde[0].title is undefined'); 
-  }*/
+  
                                                          
                                                          
         
@@ -31,17 +25,17 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
             {
                 $scope.pshow=false;
                 $scope.phide=true;
-                console.log("electronics")
+                //console.log("electronics")
             }
         else{
             var array=Object.keys($scope.product.size);
-            console.log(array);
+           // console.log(array);
             $scope.size=array;
             
             $localStorage.prodSize=$scope.size;
             $scope.pshow=true;
             $scope.phide=false;
-            console.log("other")
+          //  console.log("other")
         }      
              }
      
@@ -61,7 +55,7 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
    
      $scope.subTotal=0;
     $scope.displayProduct=function(product)
-    {console.log("in displaypro");
+    {//console.log("in displaypro");
         
         $scope.product=product;
         $localStorage.productSpecific= $scope.product;
@@ -70,17 +64,17 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
             {
                 $scope.pshow=false;
                 $scope.phide=true;
-                console.log("electronics")
+                //console.log("electronics")
             }
         else{
             var array=Object.keys($scope.product.size);
-            console.log(array);
+            //console.log(array);
             $scope.size=array;
             
             $localStorage.prodSize=$scope.size;
             $scope.pshow=true;
             $scope.phide=false;
-            console.log("other")
+           // console.log("other")
         }
         $location.path('/productpage');
     }
@@ -91,7 +85,7 @@ $scope.placeOrder=function()
         
         
         var data={"itemArray":$scope.itemArray};
-        console.log(data.itemArray);
+       // console.log(data.itemArray);
         $http.post('/placeorder',data).then(function(response)
          {  
              if(response.data.status)
@@ -99,7 +93,7 @@ $scope.placeOrder=function()
                        $localStorage.itemLS=[];
                      $scope.itemArray=[];
                      $scope.cartItems();
-                     console.log("in checkoutController");
+                     //console.log("in checkoutController");
                      $location.path('/yo');
                      
                  }
@@ -133,7 +127,7 @@ $scope.placeOrder=function()
            // console.log(product);
    var itemIndex= $scope.isItemPresent(prodID,$scope.itemArray);
        // console.log(itemPresent);
-            console.log(itemIndex);
+           // console.log(itemIndex);
     if(itemIndex==-1)
         {
             
@@ -147,7 +141,7 @@ $scope.placeOrder=function()
                } 
             }
             
-       console.log($scope.itemArray);
+       //console.log($scope.itemArray);
         $scope.totalItemsInCart++;
         
        // console.log($scope.itemArray);
@@ -159,14 +153,14 @@ $scope.placeOrder=function()
         for(var i=0;i<list.length;i++)
         {
            if(list[i].pid==productID)//
-               {console.log("in delispresent index");
+               {//console.log("in delispresent index");
                    itemIndex=i;
                   break;
                    
                }
           
         }
-       console.log(itemIndex+"itemprs index");
+       //console.log(itemIndex+"itemprs index");
         return itemIndex;
     };
     $scope.subtotal=function()
@@ -176,7 +170,7 @@ $scope.placeOrder=function()
               $scope.sum=$scope.sum+$scope.itemArray[index].pprice*$scope.itemArray[index].count; 
                 
             }
-     console.log($scope.sum);
+    // console.log($scope.sum);
         return $scope.sum;
     }
     $scope.flag=false; 
@@ -204,20 +198,20 @@ $scope.placeOrder=function()
      $scope.styleFlag=function(index)
     {$scope.selectedIndex=index;
         if($scope.flag==false)
-          {console.log("in false if");
+          {//console.log("in false if");
            //console.log($scope.flag);
               $scope.flag=true;
            //console.log($scope.flag);
           }
        else if($scope.flag==true){
-          console.log("in true if");
+         // console.log("in true if");
           $scope.flag=false;
       }
     return $scope.selectedIndex;    
         
     }; 
 
-    console.log($scope.itemArray);
+   // console.log($scope.itemArray);
   
   // $scope.wishListArray= $localStorage.wishLS;
   $scope.deleteProduct=function(product,arrayList)
@@ -230,7 +224,7 @@ $scope.placeOrder=function()
           arrayList.splice(itemIndex,1);
        //$localStorage.itemLS=$scope.itemArray;
       
-      console.log($scope.itemArray);
+      //console.log($scope.itemArray);
       
   };
     $localStorage.wishLS= $scope.wishListArray;
@@ -258,11 +252,11 @@ $location.path("/");
         if($scope.searchitem)
         {
         $location.path("/search");
-    console.log($scope.searchitem);
+    //console.log($scope.searchitem);
       var data={
           "searchValue":$scope.searchitem
                 }
-         console.log($scope.searchitem);
+         //console.log($scope.searchitem);
       $http.post("/search",data).then(function(res) {
           $scope.products=res.data;
           if($scope.products.length)
@@ -287,17 +281,17 @@ $location.path("/");
             "emailId":$scope.emailid,
             "password":$scope.password
         }
-        console.log(data);
+        //console.log(data);
         
         $http.post("/loginorsignup/login",data).then(function(res) {
             
           var count=res.data.count;
             var logedin=res.data.logedin;
            var userName=res.data.userName;
-            console.log(res.data.Details);
-            console.log(count);
+            //console.log(res.data.Details);
+            //console.log(count);
             if(count>0)
-                { console.log(count);
+                {// console.log(count);
                  
                     angular.element('#close').click();
                  $scope.userName=userName;
@@ -305,7 +299,7 @@ $location.path("/");
                  $scope.myaccountshow=logedin;
                  $localStorage.itemLS=res.data.userDetails.attocart;
                  $scope.itemArray=$localStorage.itemLS;
-                 console.log($scope.loginshow);
+                // console.log($scope.loginshow);
                   /*$scope.myaccuntshow="false";*/
                     $location.path("/homepage.html");
    
@@ -329,7 +323,7 @@ $location.path("/");
                   "password":$scope.pswrd,
                   "mnumber":$scope.mnumber
       };
-            console.log(data.fname);
+           // console.log(data.fname);
             
                   $http.post("/loginorsignup/register",data).then(function(res) {
           var count=res.data.count;
@@ -415,12 +409,12 @@ myApp.controller("searchController",['$scope','$http','$location','$routeParams'
 myApp.controller("catWomenController",['$scope','$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
    var refresh=function(){
         var category=$routeParams.category;
-        console.log(category);
+       // console.log(category);
         if(category==null)
             {
      
      $http.get('/women').then(function(response)
-        {  console.log("data recvd");                      
+        { // console.log("data recvd");                      
         $scope.products=response.data;
         });
             }
@@ -430,7 +424,7 @@ myApp.controller("catWomenController",['$scope','$http','$location','$routeParam
                   "category":category  
                 };
                  $http.post('/women',data).then(function(response)
-            {  console.log("data recvd");                      
+            { // console.log("data recvd");                      
         $scope.products=response.data;
         });
            }
@@ -455,7 +449,7 @@ myApp.controller("catMenController",['$scope','$http','$location','$routeParams'
     
     var refresh=function(){
         var category=$routeParams.category;
-        console.log(category);
+        //console.log(category);
         if(category==null)
             {
                 
@@ -463,7 +457,7 @@ myApp.controller("catMenController",['$scope','$http','$location','$routeParams'
        /* if($routeParams.category==null)
      */
     $http.get('/men').then(function(response)
-        {  console.log("data recvd");                      
+        { // console.log("data recvd");                      
         $scope.products=response.data;
         });
             }
@@ -473,7 +467,7 @@ myApp.controller("catMenController",['$scope','$http','$location','$routeParams'
                   "category":category  
                 };
                  $http.post('/men',data).then(function(response)
-            {  console.log("data recvd");                      
+            { // console.log("data recvd");                      
         $scope.products=response.data;
         });
             }
@@ -500,11 +494,11 @@ myApp.controller("catElectronicsController",['$scope','$http','$location','$rout
             
     var refresh=function(){
       var category=$routeParams.category;
-        console.log(category);
+        //console.log(category);
         if(category==null)
             {
      $http.get('/electronics').then(function(response)
-        {  console.log("data recvd");                      
+        { // console.log("data recvd");                      
         $scope.products=response.data;
         });
     }
@@ -514,7 +508,7 @@ myApp.controller("catElectronicsController",['$scope','$http','$location','$rout
                   "category":category  
                 };
                  $http.post('/electronics',data).then(function(response)
-            {  console.log("data recvd");                      
+            { // console.log("data recvd");                      
         $scope.products=response.data;
         });
     }
@@ -535,7 +529,7 @@ myApp.controller("catElectronicsController",['$scope','$http','$location','$rout
 }]);
 myApp.controller("yourorderController",['$scope','$http','$location','$routeParams','$localStorage',function($scope,$http,$location,$routeParams,$localStorage){
     $http.get('/refresh').then(function(response)
-        { console.log(response.data.logedin);   
+        { //console.log(response.data.logedin);   
          var logedin=response.data.logedin;
          $scope.userName=response.data.userName;
           $scope.loginshow=!logedin;
@@ -551,7 +545,7 @@ myApp.controller("yourorderController",['$scope','$http','$location','$routePara
 
 myApp.controller("youraccountController",['$scope','$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
     $http.get('/refresh').then(function(response)
-        { console.log(response.data.logedin);   
+        { //console.log(response.data.logedin);   
          var logedin=response.data.logedin;
          $scope.userName=response.data.userName;
           $scope.loginshow=!logedin;
@@ -584,15 +578,15 @@ myApp.controller("youraccountController",['$scope','$http','$location','$routePa
     $scope.saveChanges=function()
     {
         var newdata={};
-        console.log($scope.userDetails.password);
-        console.log("here");
-        console.log(newdata);
+       // console.log($scope.userDetails.password);
+       // console.log("here");
+        //console.log(newdata);
         if($scope.newpassword==null)
             {
                var password=$scope.userDetails.password;
-                console.log(password);
+               // console.log(password);
                 newdata.password=password;
-                console.log("here");
+               // console.log("here");
             }
         else{
         newdata.password=$scope.newpassword;
@@ -624,32 +618,12 @@ myApp.controller("youraccountController",['$scope','$http','$location','$routePa
     
 }]);
 myApp.controller("checkoutController",['$scope','$http','$location','$localStorage',function($scope,$http,$location,$localStorage){
-    /*$scope.placeOrder=function()
-    { 
-        
-        
-        var data={"itemArray":$scope.itemArray};
-        console.log(data.itemArray);
-        $http.post('/placeorder',data).then(function(response)
-         {  
-             if(response.data.status)
-                 {
-                       $localStorage.itemLS=[];
-                     console.log("in checkoutController");
-                     $location.path('/yo');
-                 }
-            else
-                {
-                     $location.path('/cartpage');
-                }
-        });
-    
-    };*/
+   
     
     }]);
 myApp.controller("cartpageController",['$scope','$http','$location','$localStorage',function($scope,$http,$location,$localStorage){
     $http.get('/refresh').then(function(response)
-        { console.log(response.data.logedin);   
+        { //console.log(response.data.logedin);   
          var logedin=response.data.logedin;
          $scope.loginCheck=logedin;
          $scope.userName=response.data.userName;
@@ -680,7 +654,7 @@ myApp.controller("cartpageController",['$scope','$http','$location','$localStora
         else
             {
                  angular.element('#loginorsignup').click();
-                console.log("Please Login or signup");
+               // console.log("Please Login or signup");
             }
         
     }
