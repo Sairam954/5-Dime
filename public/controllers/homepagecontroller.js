@@ -14,14 +14,41 @@ myApp.controller("myController",['$scope','$http','$location','$localStorage',fu
     $scope.size=$localStorage.prodSize;
   
 
-  
+  /*try{
+    if(typeof response[0].title !== 'undefined') {
+        doSomething();
+    }
+  }catch(e){
+    console.log('responde[0].title is undefined'); 
+  }*/
                                                          
                                                          
         
+     $scope.refreshProductPage=function(){
+         if(typeof $scope.product !== 'undefined') 
+             {
+                 if($scope.product.department=="electronics")
+            {
+                $scope.pshow=false;
+                $scope.phide=true;
+                console.log("electronics")
+            }
+        else{
+            var array=Object.keys($scope.product.size);
+            console.log(array);
+            $scope.size=array;
+            
+            $localStorage.prodSize=$scope.size;
+            $scope.pshow=true;
+            $scope.phide=false;
+            console.log("other")
+        }      
+             }
+     
+     }  
         
         
-        
-        
+     $scope.refreshProductPage();   
         
         
         
